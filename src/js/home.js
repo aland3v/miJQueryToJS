@@ -39,3 +39,16 @@ Promise.all([
 // ])
 // .then(response => console.log(response))
 // .catch(message => console.log(message));
+
+
+$.ajax('https://randomuser.me/api/', {
+  method: 'GET',
+  success: data => console.log(data),
+  error: error => console.log(error)
+})
+
+// fetch -> por defecto GET
+fetch('https://randomuser.me/api/')
+  .then(response => response.json()) // retorna otra promise
+  .then(user => console.log('User', user.results[0].name.first))
+  .catch(error => console.log("error :'("));
