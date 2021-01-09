@@ -80,8 +80,28 @@ fetch('https://randomuser.me/api/')
   // console.log('Lista de acción:', actionList.data.movies);
 
   console.log(actionList, dramaList, animationList);
+
+  // Selectores
+  // $home -> selector, es una convención empezar con '$'
+  //const $home1 = $('.home .list #item');
+
+  const $actionContainer = document.querySelector("#action");
+  const $dramaContainer = document.getElementById("drama");
+  const $animationContainer = document.getElementById("animation");
+  const $featuringContainer = document.getElementById('#featuring');
+  const $form = document.getElementById('#form');
+  const $home = document.getElementById('#home');
+
+  const $modal = document.getElementById("modal");
+  const $overlay = document.getElementById('overlay');
+  const $hideModal = document.getElementById("hide-modal");
+
+  const $modalTitle = $modal.querySelector('h1'); // por tagname
+  const $modalImage = $modal.querySelector("img");
+  const $modalDescription = $modal.querySelector('p')
 })() // sugar sintax para que la función se llame sola
 
+// Equivalente:
 // const load = async () => {
 //   console.log("algo");
 // }
