@@ -52,3 +52,38 @@ fetch('https://randomuser.me/api/')
   .then(response => response.json()) // retorna otra promise
   .then(user => console.log('User', user.results[0].name.first))
   .catch(error => console.log("error :'("));
+
+
+(async () => {
+  // await
+  async function getData(url) {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      return data; // retornará data en forma de promesa
+    } catch (error) {
+      return(error);
+    }
+  }
+
+  // 2 formas de acceder
+  const actionList = await getData('https://yts.mx/api/v2/list_movies.json?genre=action');
+  const dramaList = await getData('https://yts.mx/api/v2/list_movies.json?genre=drama');
+  const animationList = await getData('https://yts.mx/api/v2/list_movies.json?genre=animation')
+
+  // let terrorList;
+  // getData('https://yts.mx/api/v2/list_movies.json?genre=terror')
+  //   .then(response => {
+  //     console.log('Lista de terror:', response.data.movies);
+  //     terrorList = response
+  //   });
+  // console.log('Lista de acción:', actionList.data.movies);
+
+  console.log(actionList, dramaList, animationList);
+})() // sugar sintax para que la función se llame sola
+
+// const load = async () => {
+//   console.log("algo");
+// }
+
+// load();
