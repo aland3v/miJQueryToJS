@@ -9,13 +9,21 @@ function cambiarNombre(nuevoNombre) {
 
 const getUserAll = new Promise((todoBien, todoMal) => {
   setTimeout(() =>
-    true ? todoBien("Todo bien getAll") : todoMal("Todo mal getAll"), 5000)
+    true ? todoBien("Todo bien getAll") : todoMal("Todo mal getAll"), 5000);
 });
 
 const getUser = new Promise((todoBien, todoMal) => {
   setTimeout(() =>
-  true ? todoBien("Todo bien get") : todoMal("Todo mal get"), 6000);
+    true ? todoBien("Todo bien get") : todoMal("Todo mal get"), 6000);
 });
+
+Promise.all([
+  getUser,
+  getUserAll,
+])
+.then(response => console.log(response)) // devuelve un array con cada response
+.catch(message => console.log(message)); // cacha el 1er error encontrado
+
 
 // getUser
 //   .then(function() {
@@ -31,10 +39,3 @@ const getUser = new Promise((todoBien, todoMal) => {
 // ])
 // .then(response => console.log(response))
 // .catch(message => console.log(message));
-
-Promise.all([
-  getUser,
-  getUserAll,
-])
-.then(response => console.log(response)) // devuelve un array con cada response
-.catch(message => console.log(message)); // cacha el 1er error encontrado
